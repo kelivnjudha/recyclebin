@@ -1,0 +1,36 @@
+.box1{
+  background-color: #3F0BFC;
+  height: 70px;
+  font-size: 40px;
+  font-family: 'Dela Gothic One', cursive;
+  color: #FFFFFF;
+  word-spacing: 20px;
+  letter-spacing: 10px; 
+}
+.box2{
+  background-color: #32FF00;
+  height:1000px;
+}
+.text2{
+  font-family: 'Fahkwang', sans-serif;
+  font-size: 28px;
+  text-align: center;
+  position: absolute;
+  top:85px;
+  color: #3F0BFC;
+  width: 100%;
+  word-spacing: 0px;
+  letter-spacing: 10px;
+}
+html, body {
+  position: relative;
+  height: 100%;
+}
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color:#000;
+  margin: 0;
+  padding: 0;
+}
