@@ -1,36 +1,139 @@
-.box1{
+.box1 {
   background-color: #3F0BFC;
   height: 70px;
   font-size: 40px;
-  font-family: 'Dela Gothic One', cursive;
+  font-family: "Dela Gothic One", cursive;
   color: #FFFFFF;
   word-spacing: 20px;
-  letter-spacing: 10px; 
+  letter-spacing: 10px;
 }
-.box2{
+
+.box2 {
   background-color: #32FF00;
-  height:1000px;
+  height: 1000px;
 }
-.text2{
-  font-family: 'Fahkwang', sans-serif;
+
+.text2 {
+  font-family: "Fahkwang", sans-serif;
   font-size: 28px;
   text-align: center;
   position: absolute;
-  top:85px;
+  top: 85px;
   color: #3F0BFC;
   width: 100%;
   word-spacing: 0px;
   letter-spacing: 10px;
 }
+
 html, body {
   position: relative;
   height: 100%;
 }
+
 body {
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  color:#000;
+  color: #000;
   margin: 0;
   padding: 0;
 }
+
+body {
+  overflow: hidden;
+}
+
+.carrousel {
+  position: relative; /* Change this to 'relative' or 'fixed' as needed */
+  width: 100%; /* Adjust the width as needed */
+  height: 50%; /* Adjust the height as needed */
+  top: 247px; /* Adjust the top position as needed */
+  transform: translateY(-50%); /* Center vertically */
+  /* Add other styles as needed */
+}
+
+
+.carrousel .card {
+  position: absolute;
+  left: 10px;
+  transform: translateX(-50%); /* Center the card horizontally */
+  width: 1860px;
+  height: 833px;
+}
+
+
+.carrousel .c0 {
+  background-color: #fff;
+}
+.carrousel .c1 {
+  background-color: #ddd;
+}
+.carrousel .c2 {
+  background-color: #bbb;
+}
+.carrousel .c3 {
+  background-color: #999;
+}
+.carrousel .c4 {
+  background-color: #777;
+}
+.carrousel .c5 {
+  background-color: #555;
+}
+.carrousel .c6 {
+  background-color: #333;
+}
+.carrousel .c7 {
+  background-color: #111;
+}
+
+.carrousel .card {
+  transition: transform 1200ms, opacity 500ms 500ms, box-shadow 800ms;
+}
+.carrousel .position0:hover,
+.carrousel .position1:hover,
+.carrousel .position7:hover {
+  box-shadow: 0 0 2em black;
+}
+.carrousel .position0 {
+  opacity: 1;
+  z-index: 10;
+  transform: rotateY(0deg) translateZ(100px) rotateY(0deg) scale(1);
+}
+.carrousel .position1 {
+  opacity: 1;
+  z-index: 9;
+  transform: rotateY(45deg) translateZ(100px) rotateY(-45deg) scale(0.85) translatex(270px);
+}
+.carrousel .position2 {
+  opacity: 1;
+  z-index: 8;
+  transform: rotateY(90deg) translateZ(100px) rotateY(-90deg) scale(0.6) translatex(675px);
+}
+.carrousel .position3 {
+  opacity: 0;
+  z-index: 7;
+  transform: rotateY(135deg) translateZ(100px) rotateY(-135deg) scale(0.3);
+}
+.carrousel .position4 {
+  opacity: 0;
+  z-index: 6;
+  transform: rotateY(180deg) translateZ(100px) rotateY(180deg) scale(0.2);
+}
+.carrousel .position5 {
+  opacity: 0;
+  z-index: 7;
+  transform: rotateY(-135deg) translateZ(100px) rotateY(135deg) scale(0.3);
+}
+.carrousel .position6 {
+  opacity: 1;
+  z-index: 8;
+  transform: rotateY(-90deg) translateZ(100px) rotateY(90deg) scale(0.6) translatex(-675px);
+}
+.carrousel .position7 {
+  opacity: 1;
+  z-index: 9;
+  transform: rotateY(-45deg) translateZ(100px) rotateY(45deg) scale(0.85) translatex(-270px);
+}
+
+/*# sourceMappingURL=style.css.map */
