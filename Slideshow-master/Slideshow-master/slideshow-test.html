@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Slideshow Test">
+  <meta name="author" content="Oscar Flores">
+  <title>Slideshow</title>
+  <style>
+    #central_wrapper {
+        width: 317px;
+        height: 317px;
+        position: relative;
+        margin: 50px auto 0;
+        -webkit-perspective: 1000px;
+           -moz-perspective: 1000px;
+             -o-perspective: 1000px;
+                perspective: 1000px;
+      }
+
+      #slideshow {
+        position: absolute;
+        list-style-type: none;
+        padding: 0px 16px;
+        -webkit-transform-style: preserve-3d;
+           -moz-transform-style: preserve-3d;
+             -o-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+
+      }
+
+      #slideshow > *{
+        display: block;
+        position: absolute;
+      }
+
+      #slideshow img{
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        -webkit-border-radius:4px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px #ccc;
+      }
+
+      #slideshow .front  {
+        -webkit-transform: translateZ( 100px );
+           -moz-transform: translateZ( 100px );
+             -o-transform: translateZ( 100px );
+                transform: translateZ( 100px );
+          opacity:1;
+          
+      -webkit-transition: -webkit-transform 1s, opacity 1s;
+           -moz-transition: -moz-transform 1s, opacity 1s;
+             -o-transition: -o-transform 1s, opacity 1s;
+                transition: transform 1s, opacity 1s;         
+      }
+
+      #slideshow .right {
+        -webkit-transform: rotateY(   90deg ) translateZ( 200px ) ;
+           -moz-transform: rotateY(   90deg ) translateZ( 200px ) ;
+             -o-transform: rotateY(   90deg ) translateZ( 200px ) ;
+                transform: rotateY(   90deg ) translateZ( 200px ) ;
+          opacity:0;
+          
+      -webkit-transition: -webkit-transform 1s, opacity 1s;
+           -moz-transition: -moz-transform 1s, opacity 1s;
+             -o-transition: -o-transform 1s, opacity 1s;
+                transition: transform 1s, opacity 1s; 
+                  
+      }
+      #slideshow .left {
+        -webkit-transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
+           -moz-transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
+             -o-transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
+                transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
+          opacity:0;
+          
+      -webkit-transition: -webkit-transform 1s, opacity 1s;
+           -moz-transition: -moz-transform 1s, opacity 1s;
+             -o-transition: -o-transform 1s, opacity 1s;
+                transition: transform 1s, opacity 1s; 
+      }
+
+      select{
+        position: absolute;
+        right: 50%;
+        bottom: -50px;
+        margin-right: -100px;
+        width: 200px;
+        background: #000;
+        color: #fff;
+        -webkit-border-radius:4px;
+        border-radius: 4px;
+        border:1px solid #ccc;
+        font-size: 0.7em;
+        padding: 5px;
+        height: 28px;
+      }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      function slideShow(){
+        // '*' to work with any element, not only 'li's
+        this.slides = $('#slideshow > *'); 
+        this.count = this.slides.length-1;
+        this.initslide = 0;
+        this.auto = null; 
+
+        this.selectTitles();
+        this.ActivateAuto();
+      };
+
+      slideShow.prototype.selectTitles = function(){
+      	var that = this;
+        $('#central_wrapper').append('<select></select>');
+        $('#slideshow > * > img').each(function(i) {
+            $('select').append('<option val="'+i+'">'+ $( this ).attr('alt') +'</option>');
+          }); 
+        $('select').change(this.onChange.bind(this));
+      };
+
+      slideShow.prototype.nextSlide = function(){
+        this.initslide = (this.initslide++ >= this.count) ? 0 : this.initslide++;
+        this.animateSlide();
+        //console.log(this.initslide);
+      };
+
+      slideShow.prototype.animateSlide = function(){ 
+        var currentSlide = this.initslide; 
+        var nextSlide = ((currentSlide+1) > this.count) ? 0 : currentSlide+1;
+        var prevSlide = ((currentSlide-1) < 0) ? this.count - 1 : currentSlide-1;  
+
+        $('#slideshow > *').removeClass().not($('#slideshow > *').filter(function( index ) {
+                  return index === currentSlide || index === nextSlide || index === prevSlide;
+                })).addClass('left');  
+        $('#slideshow > *:eq('+prevSlide+')').addClass('left');
+        $('#slideshow > *:eq('+nextSlide+')').addClass('right');
+        $('#slideshow > *:eq('+currentSlide+')').addClass('front');
+
+        //Animate Dropdown menu
+        $('select option').removeAttr("selected");
+        $('select option:eq('+currentSlide+')').prop('selected',true);
+      };
+
+      slideShow.prototype.ActivateAuto = function(){
+        var that = this;
+        this.animateSlide();
+        this.auto = window.setInterval(function () {
+            that.nextSlide();
+        }, 4000);
+      };
+
+      slideShow.prototype.onChange = function(e){
+      	window.clearInterval(this.auto);
+      	var that = this;
+      	var s = $('select option:selected').index();
+      	var jump = this.initslide - s;
+
+      	if(Math.abs(jump) > 1){
+          if (jump < 0){
+            this.initslide++;
+            this.animateSlide();
+
+            var rep = setInterval(function () {
+              that.initslide++;
+              that.animateSlide();
+              if(that.initslide === s){
+              window.clearInterval(rep);
+              that.ActivateAuto();
+              }
+            }, 500);
+          }else{
+            this.initslide--;
+            this.animateSlide();
+
+            var rep = setInterval(function () {
+              that.initslide--;
+              that.animateSlide();
+              if(that.initslide === s){
+              window.clearInterval(rep);
+              that.ActivateAuto();
+              }
+            }, 500);
+          }
+
+        }else{
+        	this.initslide = s;
+      		this.ActivateAuto();
+        }
+
+      	
+      };
+    </script>
+</head>
+<body>
+
+  <div id="central_wrapper">
+    <ul id="slideshow" >
+      <li>
+        <img src="imgs/add.jpg" alt="10 Best ADHD Mobile Apps"/>
+      </li>
+      <li>
+        <img src="imgs/due.jpg" alt="Due"/>
+      </li>
+      <li>
+        <img src="imgs/epic.jpg" alt="EpicWin"/>
+      </li>
+      <li>
+        <img src="imgs/evernote.jpg" alt="Evernote"/>
+      </li>
+      <li>
+        <img src="imgs/clear.jpg" alt="Clear"/>
+      </li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      new slideShow();
+    });
+  </script>
+</body>
+</html>

@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="{% static 'core/script.js' %}"></script>
@@ -24,16 +24,115 @@
 <body>
     <div class="box1" style="height: 70px; width: 100%;"><marquee>RECYCLE BIN</marquee></div>
 	<div class="box2" style="height: 70px; width: 100%;"><div class="text2"><marquee> ถ้าเค้าทิ้งก็มาลงกับเรา YOU TOSS IT , I GOT IT &nbsp;&nbsp;&nbsp;&nbsp; >>>SWIPE FOR MORE WORK>>> </marquee></div></div>
-	<div class="carrousel">
-        <div class="c0 position0 card">Card 1</div>
-        <div class="c1 position1 card">Card 2</div>
-        <div class="c2 position2 card">Card 3</div>
-        <div class="c3 position3 card">Card 4</div>
-        <div class="c4 position4 card">Card 5</div>
-        <div class="c5 position5 card">Card 6</div>
-        <div class="c6 position6 card">Card 7</div>
-        <div class="c7 position7 card">Card 8</div>
-    </div>
+	<script type="text/javascript">
+        function slideShow(){
+          // '*' to work with any element, not only 'li's
+          this.slides = $('#slideshow > *'); 
+          this.count = this.slides.length-1;
+          this.initslide = 0;
+          this.auto = null; 
+  
+          this.selectTitles();
+          this.ActivateAuto();
+        };
+  
+        slideShow.prototype.selectTitles = function(){
+            var that = this;
+          $('#central_wrapper').append('<select></select>');
+          $('#slideshow > * > img').each(function(i) {
+              $('select').append('<option val="'+i+'">'+ $( this ).attr('alt') +'</option>');
+            }); 
+          $('select').change(this.onChange.bind(this));
+        };
+  
+        slideShow.prototype.nextSlide = function(){
+          this.initslide = (this.initslide++ >= this.count) ? 0 : this.initslide++;
+          this.animateSlide();
+          //console.log(this.initslide);
+        };
+  
+        slideShow.prototype.animateSlide = function(){ 
+          var currentSlide = this.initslide; 
+          var nextSlide = ((currentSlide+1) > this.count) ? 0 : currentSlide+1;
+          var prevSlide = ((currentSlide-1) < 0) ? this.count - 1 : currentSlide-1;  
+  
+          $('#slideshow > *').removeClass().not($('#slideshow > *').filter(function( index ) {
+                    return index === currentSlide || index === nextSlide || index === prevSlide;
+                  })).addClass('left');  
+          $('#slideshow > *:eq('+prevSlide+')').addClass('left');
+          $('#slideshow > *:eq('+nextSlide+')').addClass('right');
+          $('#slideshow > *:eq('+currentSlide+')').addClass('front');
+  
+          //Animate Dropdown menu
+          $('select option').removeAttr("selected");
+          $('select option:eq('+currentSlide+')').prop('selected',true);
+        };
+  
+        slideShow.prototype.ActivateAuto = function(){
+          var that = this;
+          this.animateSlide();
+          this.auto = window.setInterval(function () {
+              that.nextSlide();
+          }, 4000);
+        };
+  
+        slideShow.prototype.onChange = function(e){
+            window.clearInterval(this.auto);
+            var that = this;
+            var s = $('select option:selected').index();
+            var jump = this.initslide - s;
+  
+            if(Math.abs(jump) > 1){
+            if (jump < 0){
+              this.initslide++;
+              this.animateSlide();
+  
+              var rep = setInterval(function () {
+                that.initslide++;
+                that.animateSlide();
+                if(that.initslide === s){
+                window.clearInterval(rep);
+                that.ActivateAuto();
+                }
+              }, 500);
+            }else{
+              this.initslide--;
+              this.animateSlide();
+  
+              var rep = setInterval(function () {
+                that.initslide--;
+                that.animateSlide();
+                if(that.initslide === s){
+                window.clearInterval(rep);
+                that.ActivateAuto();
+                }
+              }, 500);
+            }
+  
+          }else{
+              this.initslide = s;
+                this.ActivateAuto();
+          }
+  
+            
+        };
+      </script>
+      
+  <div id="central_wrapper">
+    <ul id="slideshow" >
+        {% for upload in info %}
+            <li>
+                <img src="{{upload.image.url}}" alt="img">
+            </li>
+        {% endfor %}
+    </ul> 
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      new slideShow();
+    });
+  </script>
 
 </body>
 </html>
