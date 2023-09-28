@@ -118,9 +118,18 @@
   </script>
       
   <div id="central_wrapper">
-    <ul id="slideshow" >
-        <li></li>
-    </ul> 
+    {% for info_object in info_objects %}
+    <li>
+      <div>
+        {% if info_object.image %}
+          <img src="{{ info_object.image.url }}" alt="img">
+        {% else %}
+          <!-- Handle the case where there's no image -->
+          No Image Available
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
   </div>
 
   <script type="text/javascript">
