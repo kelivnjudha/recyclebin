@@ -18,6 +18,9 @@
     <div class="box1" style="height: 70px; width: 100%;"><marquee>RECYCLE BIN</marquee></div>
     <div class="box2" style="height: 70px; width: 100%;"><div class="text2"><marquee> ถ้าเค้าทิ้งก็มาลงกับเรา YOU TOSS IT , I GOT IT &nbsp;&nbsp;&nbsp;&nbsp; >>>SWIPE FOR MORE WORK>>> </marquee></div></div>
 	<style>
+        *{
+            outline: 1px solid red ;
+        }
         #central_wrapper {
             width: 317px;
             height: 317px;
@@ -37,12 +40,14 @@
                -moz-transform-style: preserve-3d;
                  -o-transform-style: preserve-3d;
                     transform-style: preserve-3d;
-    
           }
     
           #slideshow > *{
-            display: block;
-            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100vw; /* Set width to 100% of the viewport width */
+            justify-content: space-between; /* Distribute space between the image and details */
+            flex-wrap: wrap;
           }
     
           #slideshow img{
@@ -54,6 +59,8 @@
             -webkit-border-radius:4px;
             border-radius: 4px;
             box-shadow: 0 0 5px #ccc;
+            max-width: 50%; /* Image takes up 50% of the screen width */
+            height: auto;
           }
     
           #slideshow .front  {
@@ -94,6 +101,10 @@
                  -o-transition: -o-transform 1s, opacity 1s;
                     transition: transform 1s, opacity 1s; 
           }
+        
+          #slideshow .img-profile{
+            flex-direction: row;
+          }
     
           select{
             position: absolute;
@@ -110,6 +121,30 @@
             padding: 5px;
             height: 28px;
           }
+
+          li .img-profile {
+            display: flex;
+            width: 100vw;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        li .img-src {
+            flex: 1;
+            max-width: 50%;
+            height: auto;
+            }
+
+            li .image-details {
+                flex: 1;
+                max-width: 45%; /* Adjust this if needed */
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                overflow: hidden; /* Hide overflowing content */
+            }
+
       </style>
       
       <script type="text/javascript">
@@ -249,8 +284,14 @@
         <div id="central_wrapper">
             <ul id="slideshow" >
               {% for info_object in info_objects %}
-              <li>
-                <img src="{{ info_object.image.url }}" alt="img">
+              <li class="img-profile">
+                <img class="img-src" src="{{ info_object.image.url }}" alt="img">
+                <div class="image-details">
+                    <h3>{{ info_object.Title }}</h3>
+                    <p><strong>Description:</strong> {{ info_object.description }}</p>
+                    <p><strong>Reason of Rejection:</strong> {{ info_object.reason_of_rejection }}</p>
+                    <p><strong>Contact:</strong> {{ info_object.Contact }}</p>
+                </div>
               </li>
               {% endfor %}
             </ul>
