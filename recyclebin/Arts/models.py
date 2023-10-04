@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from PIL import Image
 # Create your models here.
 class Upload(models.Model):
     name = models.CharField(max_length=255)
@@ -24,3 +24,18 @@ class Info(models.Model):  # Changed model name to 'Info' with an uppercase 'I'
 
     def __str__(self):
         return self.Title
+    
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)  # Call the "real" save() method.
+
+        # Open the uploaded image
+        img = Image.open(self.image.path)
+
+        # Resize it to your desired dimensions
+        # For example, let's say you want it to be 800x800
+        output_size = (400, 400)
+        img.thumbnail(output_size)
+
+        # Save the resized image back to the same path
+        img.save(self.image.path)
