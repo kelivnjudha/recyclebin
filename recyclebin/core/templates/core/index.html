@@ -1,306 +1,286 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'core/style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">	
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+	 <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <title>Recyclebin</title>
-</head>
-<body>
-    <div class="box1" style="height: 70px; width: 100%;"><marquee>RECYCLE BIN</marquee></div>
-    <div class="box2" style="height: 70px; width: 100%;"><div class="text2"><marquee> ถ้าเค้าทิ้งก็มาลงกับเรา YOU TOSS IT , I GOT IT &nbsp;&nbsp;&nbsp;&nbsp; >>>SWIPE FOR MORE WORK>>> </marquee></div></div>
 	<style>
-        *{
-            outline: 1px solid red ;
-        }
-        #central_wrapper {
-            width: 317px;
-            height: 317px;
-            position: relative;
-            margin: 50px auto 0;
-            -webkit-perspective: 1000px;
-               -moz-perspective: 1000px;
-                 -o-perspective: 1000px;
-                    perspective: 1000px;
-          }
+	.box1{background-color: #0023FF;
+			height: 70px;
+		font-size: 40px;
+			font-family: 'Dela Gothic One', cursive;
+			color: #FFFFFF;
+		word-spacing: 20px;
+		letter-spacing: 10px;
+			}
+		.box2{background-color: #32FF00;
+		height:1000px;
+		}
+		.text2{font-family: 'Fahkwang', sans-serif;
+		font-size: 28px;
+		text-align: center;
+		position: absolute;
+		top:85px;
+		color: #0023FF;
+		width: 100%;
+		word-spacing: 0px;
+		letter-spacing: 10px;}
+	html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+		overflow: hidden;
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+		font-size: 100px;
+		font-family: 'Dela Gothic One', cursive;
+		color: #3F0BFC;
+    }
+    .swiper-wrapper{
+      padding-left: initial;
+      margin: 0;
+    }
     
-          #slideshow {
-            position: absolute;
-            list-style-type: none;
-            padding: 0px 16px;
-            -webkit-transform-style: preserve-3d;
-               -moz-transform-style: preserve-3d;
-                 -o-transform-style: preserve-3d;
-                    transform-style: preserve-3d;
-          }
-    
-          #slideshow > *{
-            display: flex;
-            align-items: center;
-            width: 100vw; /* Set width to 100% of the viewport width */
-            justify-content: space-between; /* Distribute space between the image and details */
-            flex-wrap: wrap;
-          }
-    
-          #slideshow img{
-            pointer-events: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -o-user-select: none;
-            user-select: none;
-            -webkit-border-radius:4px;
-            border-radius: 4px;
-            box-shadow: 0 0 5px #ccc;
-            max-width: 50%; /* Image takes up 50% of the screen width */
-            height: auto;
-          }
-    
-          #slideshow .front  {
-            -webkit-transform: translateZ( 100px );
-               -moz-transform: translateZ( 100px );
-                 -o-transform: translateZ( 100px );
-                    transform: translateZ( 100px );
-              opacity:1;
-              
-          -webkit-transition: -webkit-transform 1s, opacity 1s;
-               -moz-transition: -moz-transform 1s, opacity 1s;
-                 -o-transition: -o-transform 1s, opacity 1s;
-                    transition: transform 1s, opacity 1s;         
-          }
-    
-          #slideshow .right {
-            -webkit-transform: rotateY(   90deg ) translateZ( 200px ) ;
-               -moz-transform: rotateY(   90deg ) translateZ( 200px ) ;
-                 -o-transform: rotateY(   90deg ) translateZ( 200px ) ;
-                    transform: rotateY(   90deg ) translateZ( 200px ) ;
-              opacity:0;
-              
-          -webkit-transition: -webkit-transform 1s, opacity 1s;
-               -moz-transition: -moz-transform 1s, opacity 1s;
-                 -o-transition: -o-transform 1s, opacity 1s;
-                    transition: transform 1s, opacity 1s; 
-                      
-          }
-          #slideshow .left {
-            -webkit-transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
-               -moz-transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
-                 -o-transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
-                    transform: rotateY(  -90deg ) translateZ( 200px ) translateX(-360px);
-              opacity:0;
-              
-          -webkit-transition: -webkit-transform 1s, opacity 1s;
-               -moz-transition: -moz-transform 1s, opacity 1s;
-                 -o-transition: -o-transform 1s, opacity 1s;
-                    transition: transform 1s, opacity 1s; 
-          }
-        
-          #slideshow .img-profile{
-            flex-direction: row;
-          }
-    
-          select{
-            position: absolute;
-            right: 50%;
-            bottom: -50px;
-            margin-right: -100px;
-            width: 200px;
-            background: #000;
-            color: #fff;
-            -webkit-border-radius:4px;
-            border-radius: 4px;
-            border:1px solid #ccc;
-            font-size: 0.7em;
-            padding: 5px;
-            height: 28px;
-          }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        width: 80%;
+        border-right: 1px solid #0023FF;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+		.box3{
+			height: 700px;
+			width: 100%;
+			background-color: #32FF00;
+			font-family: 'Dela Gothic One', cursive;
+		}
+		.textn{font-family: 'Dela Gothic One', cursive;
+			color: #0023FF;
+			font-size: 30px;
+			padding-bottom: 20px;
+			padding-top: 10px;
+		}
+		.box4{
+			height: 250px;
+			width: 100%;
+			background-color: #32FF00;
+		}
+		.upload{
+			color: #0023FF;
+			font-family: 'Dela Gothic One', cursive;
+			position: absolute;
+			text-align: right;
+			top:860px;
+			right: 220px;
+			font-size: 25px;
+		}
+		.upload2{color: #0122FE;
+			font-family: 'Fahkwang', sans-serif;
+			position: absolute;
+			top:1040px;
+			right: 25px;
+			font-size: 18px;
+			font-weight: bold;
+		}
+			
+		.boxs{hight:1000px;}
+/*     .swiper-slide:nth-child(2n) {
+        width: 60%;
+    }
+    .swiper-slide:nth-child(3n) {
+        width: 40%;
+    } */
+		.logo{height: 180px;
+		width: 180px;
+		position:absolute;
+		top:870px;
+		left:70px}
+		
+		.qr{height: 180px;
+		width: 180px;
+		position: absolute;
+		top:860px;
+		right:25px;}
+	.button-74 {
+  background-color: #fff;
+  border: 2px solid #0023FF;
+  border-radius: 30px;
+  box-shadow: #0122FE 4px 4px 0 0;
+  color:#0122FE;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Dela Gothic One', cursive;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 
-          li .img-profile {
-            display: flex;
-            width: 100vw;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+.button-74:hover {
+  background-color: #EEDBFF;
+}
 
-        li .img-src {
-            flex: 1;
-            max-width: 50%;
-            height: auto;
-            }
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
 
-            li .image-details {
-                flex: 1;
-                max-width: 45%; /* Adjust this if needed */
-                padding: 10px;
-                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                overflow: hidden; /* Hide overflowing content */
-            }
 
-      </style>
-      
-      <script type="text/javascript">
-        function slideShow(){
-        this.slides = $('#slideshow > *'); 
-        this.count = this.slides.length-1;
-        this.initslide = 0;
-        this.auto = null; 
-        this.isDragging = false;
-        this.startX = 0;
-    
-        //this.ActivateAuto();
-        this.addSwipeFunctionality();
-        this.addArrowKeyNavigation();
-    };
-    
-    slideShow.prototype.addSwipeFunctionality = function(){
-        var that = this;
-    
-        $('#slideshow').on('mousedown', function(e){
-            that.isDragging = true;
-            that.startX = e.pageX;
-        });
-    
-        $('#slideshow').on('mousemove', function(e){
-            if(!that.isDragging) return;
-            if(e.pageX - that.startX > 50){ // swipe right
-                that.prevSlide();
-                that.isDragging = false;
-            }else if(e.pageX - that.startX < -50){ // swipe left
-                that.nextSlide();
-                that.isDragging = false;
-            }
-        });
-    
-        $('#slideshow').on('mouseup', function(){
-            that.isDragging = false;
-        });
-    };
-    slideShow.prototype.ActivateAuto = function(){
-        var that = this;
-        this.auto = setInterval(function(){
-            that.nextSlide();
-        }, 3000); // Change 3000 to the desired interval in milliseconds
-    };
-    
-    slideShow.prototype.addArrowKeyNavigation = function(){
-        var that = this;
-        $(document).keydown(function(e){
-            switch(e.which) {
-                case 37: // left arrow key
-                    that.prevSlide();
-                    break;
-                case 39: // right arrow key
-                    that.nextSlide();
-                    break;
-                default: return;
-            }
-            e.preventDefault();
-        });
-    };
-    slideShow.prototype.selectTitles = function(){
-        var that = this;
-        $('#central_wrapper').append('<select></select>');
-        $('#slideshow > * > img').each(function(i) {
-            $('select').append('<option val="'+i+'">'+ $(this).attr('alt') +'</option>');
-        }); 
-        $('select').change(this.onChange.bind(this));
-    };
-    
-    slideShow.prototype.nextSlide = function(){
-        this.initslide = (this.initslide >= this.count) ? 0 : this.initslide + 1;
-        this.animateSlide();
-    };
-    
-    slideShow.prototype.animateSlide = function(){ 
-        var currentSlide = this.initslide; 
-        var nextSlide = ((currentSlide+1) > this.count) ? 0 : currentSlide+1;
-        var prevSlide = ((currentSlide-1) < 0) ? this.count : currentSlide-1;  
-    
-        $('#slideshow > *').removeClass().not($('#slideshow > *').filter(function(index) {
-            return index === currentSlide || index === nextSlide || index === prevSlide;
-        })).addClass('left');  
-        $('#slideshow > *:eq('+prevSlide+')').addClass('left');
-        $('#slideshow > *:eq('+nextSlide+')').addClass('right');
-        $('#slideshow > *:eq('+currentSlide+')').addClass('front');
-    
-        $('select option').removeAttr("selected");
-        $('select option:eq('+currentSlide+')').prop('selected', true);
-    };
-    
-    slideShow.prototype.onChange = function(e){
-        window.clearInterval(this.auto);
-        var that = this;
-        var s = $('select option:selected').index();
-        var jump = this.initslide - s;
-    
-        if(Math.abs(jump) > 1){
-            if (jump < 0){
-                this.initslide++;
-                this.animateSlide();
-    
-                var rep = setInterval(function () {
-                    that.initslide++;
-                    that.animateSlide();
-                    if(that.initslide === s){
-                        window.clearInterval(rep);
-                    }
-                }, 500);
-            } else {
-                this.initslide--;
-                this.animateSlide();
-    
-                var rep = setInterval(function () {
-                    that.initslide--;
-                    that.animateSlide();
-                    if(that.initslide === s){
-                        window.clearInterval(rep);
-                    }
-                }, 500);
-            }
-        } else {
-            this.initslide = s;
-        }
-    };
-    
-    slideShow.prototype.prevSlide = function(){
-        this.initslide = (this.initslide <= 0) ? this.count : this.initslide - 1;
-        this.animateSlide();
-    };
-    
-    
-      </script>
-    </head>
-        <body>
-    
-        <div id="central_wrapper">
-            <ul id="slideshow" >
-              {% for info_object in info_objects %}
-              <li class="img-profile">
-                <img class="img-src" src="{{ info_object.image.url }}" alt="img">
-                <div class="image-details">
-                    <h3>{{ info_object.Title }}</h3>
-                    <p><strong>Description:</strong> {{ info_object.description }}</p>
-                    <p><strong>Reason of Rejection:</strong> {{ info_object.reason_of_rejection }}</p>
-                    <p><strong>Contact:</strong> {{ info_object.Contact }}</p>
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+	</style>
+	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">	
+	
+	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+	
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+<!-- Swiper -->
+	<div class="box1" style="height: 70px; width: 100%;"><marquee>RECYCLE BIN</marquee></div>
+	<div class="box2" style="height: 70px; width: 100%;"><div class="text2"><marquee> ถ้าเค้าทิ้งก็มาลงกับเรา YOU TOSS IT , I GOT IT &nbsp;&nbsp;&nbsp;&nbsp; >>>SWIPE FOR MORE WORK>>> </marquee></div></div>
+	<div class="box3">
+    <div class="swiper-container">
+        <ul class="swiper-wrapper">
+            
+            {% for info_object in info_objects %}
+            <li class="swiper-slide">
+                <img style="height: 700px; width: 1920px;" src="{{ info_object.image.url }}" alt="img">
+                <div class="textn">TANPHICHA HAPPY</div>
+                <div class="bttn">
+                    <button type="button" class="button-74" role="button" onClick="onClick({{ info_object.id }})">LIKE
+                        <div class="content heart-active"></div>
+                        <span class="heart heart-active"></span>
+                        <a id="clicks_{{ info_object.id }}">0</a>
+                    </button>
+                    <div class="heart-btn"></div>
                 </div>
-              </li>
-              {% endfor %}
-            </ul>
-        </div>
-        
-          <script type="text/javascript">
-            $(function() {
-                var slideshow = new slideShow();
-            });
-          </script>
+            </li>
+            {% endfor %}
+
+        </ul>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+		</div>
+	<div class="box4">
+		<div class="logo">
+		<img src="{% static 'core/images/1x/logo9.png' %}" width="100%" height="100%"></div>
+		<div class="qr"><img src="{% static 'core/images/bin.png' %}" width="100%" height="100%"></div>
+		<div class="upload">UPLOAD<br>YOUR<br>WORK<br>HERE!</div>
+		<div class="upload2">**Your work will be uploaded every 2 days</div>
+	</div>
+
 </body>
+	
+	<script>
+        $.ajaxSetup({
+    headers: { "X-CSRFToken": '{{ csrf_token }}' }
+});
+
+		 var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+			 loop: true,
+        slidesPerView: 'auto',
+        paginationClickable: true,
+        spaceBetween: 0,
+			 effect: "coverflow",
+			  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: true,
+	
+  },
+			 
+    });
+		 
+		var clicks = 0;
+
+        function onClick(info_object_id) {
+    $.ajax({
+        url: `/like/${info_object_id}/`,
+        method: 'POST',
+        success: function(response) {
+            document.getElementById(`clicks_${info_object_id}`).innerHTML = response.like_count;
+        }
+    });
+}
+
+    // Call this function on page load to set the initial like counts
+    function setInitialLikeCounts() {
+        {% for info_object in info_objects %}
+        $.ajax({
+            url: `/get_like_count/${info_object.id}/`,
+            method: 'GET',
+            success: function(response) {
+                document.getElementById(`clicks_${info_object.id}`).innerHTML = response.like_count;
+            }
+        });
+        {% endfor %}
+    }
+
+    $(document).ready(function() {
+        setInitialLikeCounts();
+    });
+
+      $(document).ready(function(){
+        $('.content').click(function(){
+          $('.content').toggleClass("heart-active")
+          $('.text').toggleClass("heart-active")
+          $('.numb').toggleClass("heart-active")
+          $('.heart').toggleClass("heart-active")
+        });
+      });
+    </script>
+	
 </html>

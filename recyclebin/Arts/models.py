@@ -19,6 +19,7 @@ class Info(models.Model):  # Changed model name to 'Info' with an uppercase 'I'
     reason_of_rejection = models.TextField(blank=True, null=False)
     Contact = models.CharField(max_length=225, default='N/A')
     image = models.ImageField(upload_to='upload_images', blank=True, null=False)  # Fixed field name 'imgae'
+    likes = models.PositiveIntegerField(default=0)
     created_by = models.ForeignKey(User, related_name='uploaded_info', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

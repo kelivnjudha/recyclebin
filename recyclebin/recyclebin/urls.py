@@ -19,10 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from core.views import index
+from core import views
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
+    path('update_likes/<int:item_id>/', views.update_likes, name='update_likes'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 if settings.DEBUG:
