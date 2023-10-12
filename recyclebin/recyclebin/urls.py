@@ -24,7 +24,9 @@ from core import views
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
-    path('update_likes/<int:item_id>/', views.update_likes, name='update_likes'),
+    path('like/<int:info_object_id>/', views.like_view, name='like_view'),
+    path('like/<int:slide_id>/', views.like_slide, name='like_slide'),
+    path('get_like_count/<int:slide_id>/', views.get_like_count, name='get_like_count'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 if settings.DEBUG:

@@ -12,8 +12,9 @@ def index(request):
         'info_objects':info_objects,
     })
 
-def update_likes(request, item_id):
-    item = Info.objects.get(pk=item_id)
-    item.likes += 1
-    item.save()
-    return JsonResponse({'likes': item.likes})
+def like_view(request, info_object_id):
+    if request.method == "POST":
+        info_object = Info.objects.get(id=info_object_id)
+        info_object.likes += 1
+        info_object.save()
+        return JsonResponse({'like_count': info_object.likes})
