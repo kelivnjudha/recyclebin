@@ -8,6 +8,12 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <title>Recyclebin</title>
 	<style>
+
+    /*Profile CSS*/
+    .profile{
+      display: flex;
+    }
+
 	.box1{background-color: #0023FF;
 			height: 70px;
 		font-size: 40px;
@@ -193,8 +199,29 @@
             
             {% for info_object in info_objects %}
             <li class="swiper-slide">
-                <img style="height: 700px; width: 1920px;" src="{{ info_object.image.url }}" alt="img">
-                <div class="textn">TANPHICHA HAPPY</div>
+              <div class="profile">
+                <img style="height: 700px; width: 960px;" src="{{ info_object.image.url }}" alt="img">
+                <div class="description-info">
+                  <div class="profile-title">
+                    <h3>Title</h3>
+                    <p>{{ info_object.Title }}</p>
+                  </div>
+                  
+                  <div class="profile-description">
+                    <h3>Description</h3>
+                    <p>{{ info_object.description }}</p>
+                  </div>
+                  <div class="profile-rej">
+                    <h3>Reason of Rejection</h3>
+                    <p>{{ info_object.reason_of_rejection }}</p>
+                  </div>
+                  <div class="profile-cont">
+                    <h3>Contact</h3>
+                    <p>{{ info_object.Contact }}</p>
+                  </div>
+                </div>
+              </div>
+                <div class="textn">RECYCLEBIN</div>
                 <div class="bttn">
                     <button type="button" class="button-74" role="button" onClick="onClick({{ info_object.id }})">LIKE
                         <div class="content heart-active"></div>
@@ -214,7 +241,7 @@
 	<div class="box4">
 		<div class="logo">
 		<img src="{% static 'core/images/1x/logo9.png' %}" width="100%" height="100%"></div>
-		<div class="qr"><img src="{% static 'core/images/bin.png' %}" width="100%" height="100%"></div>
+		<div class="qr"><img src="{% static 'core/images/bin.PNG' %}" width="100%" height="100%"></div>
 		<div class="upload">UPLOAD<br>YOUR<br>WORK<br>HERE!</div>
 		<div class="upload2">**Your work will be uploaded every 2 days</div>
 	</div>
