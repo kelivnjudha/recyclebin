@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from Arts.models import Upload, Info
 from django.http import JsonResponse
+from .utils import format_likes_count
 
 # Create your views here.
 def index(request):

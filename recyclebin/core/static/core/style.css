@@ -14,7 +14,7 @@
 }
 .heart{
   position: absolute;
-  background: url("img.png") no-repeat;
+  background: url("{% static 'core/images/img.png' %}") no-repeat;
   background-position: left;
   background-size: 2900%;
   height: 120px;

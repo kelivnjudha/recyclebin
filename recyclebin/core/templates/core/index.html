@@ -8,10 +8,33 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <title>Recyclebin</title>
 	<style>
+    *{
+      outline: 1px solid red;
 
+    }
     /*Profile CSS*/
     .profile{
       display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      background-color: #0023FF;
+    }
+
+    .description-info{
+      margin-left: 50px;
+      height: 700px;
+      width: 1920px;
+      text-align: left;
+    }
+
+    .description-info h3, .description-info p{
+      font-size: 25px;
+      color: white;
+    }
+
+    .description-info p{
+      font-weight: 300;
     }
 
 	.box1{background-color: #0023FF;
@@ -114,7 +137,7 @@
 			font-weight: bold;
 		}
 			
-		.boxs{hight:1000px;}
+		.boxs{height:1000px;}
 /*     .swiper-slide:nth-child(2n) {
         width: 60%;
     }
@@ -200,7 +223,7 @@
             {% for info_object in info_objects %}
             <li class="swiper-slide">
               <div class="profile">
-                <img style="height: 700px; width: 960px;" src="{{ info_object.image.url }}" alt="img">
+                <img style="height: 700px; width: 1920px;" src="{{ info_object.image.url }}" alt="img">
                 <div class="description-info">
                   <div class="profile-title">
                     <h3>Title</h3>
@@ -274,40 +297,40 @@
 		var clicks = 0;
 
     function onClick(info_object_id) {
-    $.ajax({
-        url: `/like/${info_object_id}/`,
-        method: 'POST',
-        success: function(response) {
-            document.getElementById(`clicks_${info_object_id}`).innerHTML = response.like_count;
-        }
-    });
-}
+        $.ajax({
+            url: `/like/${info_object_id}/`,
+            method: 'POST',
+            success: function(response) {
+                document.getElementById(`clicks_${info_object_id}`).innerHTML = response.like_count;
+            }
+        });
+    }
 
-      // Call this function on page load to set the initial like counts
-      function setInitialLikeCounts() {
-          {% for info_object in info_objects %}
-          $.ajax({
-              url: `/get_like_count/${info_object.id}/`,
-              method: 'GET',
-              success: function(response) {
-                  document.getElementById(`clicks_${info_object.id}`).innerHTML = response.like_count;
-              }
-          });
-          {% endfor %}
-      }
+    // Call this function on page load to set the initial like counts
+    function setInitialLikeCounts() {
+        {% for info_object in info_objects %}
+        $.ajax({
+            url: `/get_like_count/${info_object.id}/`,
+            method: 'GET',
+            success: function(response) {
+                document.getElementById(`clicks_${info_object.id}`).innerHTML = response.like_count;
+            }
+        });
+        {% endfor %}
+    }
 
     $(document).ready(function() {
         setInitialLikeCounts();
     });
 
-      $(document).ready(function(){
+    $(document).ready(function(){
         $('.content').click(function(){
-          $('.content').toggleClass("heart-active")
-          $('.text').toggleClass("heart-active")
-          $('.numb').toggleClass("heart-active")
-          $('.heart').toggleClass("heart-active")
+            $('.content').toggleClass("heart-active")
+            $('.text').toggleClass("heart-active")
+            $('.numb').toggleClass("heart-active")
+            $('.heart').toggleClass("heart-active")
         });
-      });
+    });
     </script>
 	
 </html>
