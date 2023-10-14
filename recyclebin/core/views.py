@@ -2,12 +2,11 @@ from django.shortcuts import render
 from Arts.models import Upload, Info
 from django.http import JsonResponse
 from .utils import format_likes_count
-
+import random
 # Create your views here.
 def index(request):
     uploads = Upload.objects.all()
-    info_objects = Info.objects.all()
-    
+    info_objects = Info.objects.all().order_by('?')
     return render(request, 'core/index.html',{
         'uploads':uploads,
         'info_objects':info_objects,

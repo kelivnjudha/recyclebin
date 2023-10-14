@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'Arts',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -69,8 +70,22 @@ TEMPLATES = [
         },
     },
 ]
+# Use channels layer as the default backend for django's ASGI interface
+ASGI_APPLICATION = 'recyclebin.routing.application'
 
-WSGI_APPLICATION = 'recyclebin.wsgi.application'
+# Channel layer settings
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+
+
+WSGI_APPLICATION = None
+ASGI_APPLICATION = 'recyclebin.routing.application'
 
 
 # Database

@@ -8,10 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <title>Recyclebin</title>
 	<style>
-    *{
-      outline: 1px solid red;
-
-    }
+   
     /*Profile CSS*/
     .profile{
       display: flex;
@@ -249,7 +246,8 @@
                     <button type="button" class="button-74" role="button" onClick="onClick({{ info_object.id }})">LIKE
                         <div class="content heart-active"></div>
                         <span class="heart heart-active"></span>
-                        <a id="clicks_{{ info_object.id }}">0</a>
+                        <a id="clicks_{{ info_object.id }}">{{ info_object.likes }}</a>
+
                     </button>
                     <div class="heart-btn"></div>
                 </div>
@@ -332,5 +330,36 @@
         });
     });
     </script>
+    <script>
+      // Check if WebSocket is supported by the browser
+      if ("WebSocket" in window) {
+          // Connect to the WebSocket
+          var socket = new WebSocket("ws://147.50.253.46/ws/image_updates/");
+  
+          // Handle incoming messages
+          socket.onmessage = function(e) {
+              var data = JSON.parse(e.data);
+              var message = data['message'];
+              // Handle the message, e.g., update the images or any other content
+          };
+  
+          // Handle any errors that occur.
+          socket.onerror = function(error) {
+              console.error(`WebSocket Error: ${error}`);
+          };
+  
+          // Log WebSocket closures.
+          socket.onclose = function(e) {
+              if (e.wasClean) {
+                  console.log(`Closed cleanly, code=${e.code}, reason=${e.reason}`);
+              } else {
+                  console.error('WebSocket closed unexpectedly');
+              }
+          };
+      } else {
+          console.error("Your browser does not support WebSockets.");
+      }
+  </script>
+  
 	
 </html>

@@ -1,0 +1,4 @@
+tmux (To start tmux session)
+tmux list-sessions (To show list of sessions)
+tmux kill-session -t [SESSION_ID]
+exit (to exit tmux session)
