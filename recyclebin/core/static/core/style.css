@@ -1,4 +1,7 @@
-
+{% load static %}
+*{
+  outline: 1px solid red;
+}
 .heart-btn{
   position: absolute;
   top: 50%;
@@ -56,3 +59,5 @@
     background-position: right;
   }
 }
+
+
