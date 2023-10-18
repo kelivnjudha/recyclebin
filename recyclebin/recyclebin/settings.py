@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-agi)tc_hmy3yd#lx2f89=1n4jvvn_yk5sv0sy37fw)e-6s)q8-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'recyclebin.com']
+ALLOWED_HOSTS = ['recyclebin.world', 'www.recyclebin.world']
 
 
 # Application definition
