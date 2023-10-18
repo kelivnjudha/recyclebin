@@ -11,41 +11,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">	       
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="box1">
-        <marquee behavior="" direction="">RECYCLE BIN</marquee>
+        <div class="marquee-text">RECYCLE BIN</div>
     </div>
     <div class="box2">
         <div class="text2">
-            <marquee behavior="" direction="">ถ้าเค้าทิ้งก็มาลงกับเรา YOU TOSS IT , I GOT IT &nbsp;&nbsp;&nbsp;&nbsp; >>>SWIPE FOR MORE WORK>>> </marquee>
-        </div
+            <div class="marquee-text">ถ้าเค้าทิ้งก็มาลงกับเรา YOU TOSS IT , I GOT IT &nbsp;&nbsp;&nbsp;&nbsp; >>>SWIPE FOR MORE WORK>>> </div>
+        </div>
     </div>
     <div class="box3">
         <div class="swiper-container">
-            <ul class="swiper-wrapper">    
-                <li class="swiper-slide">
+            <div class="swiper-wrapper">    
+                <div class="swiper-slide">
                     <div class="profile-container">
                         <div class="img-container">
                             <img src="img/pic3.jpeg" alt="">
                         </div>
                         <div class="profile-info-container">
-                            <p>TEST</p>
+                            <p>TITLE</p>
                             <p>TEST</p><br>
-                            <p>TEST</p>
+                            <p>DESCTIPTION</p>
                             <p>TEST</p><br>
-                            <p>TEST</p>
+                            <p>REASON OF REJECTION</p>
                             <p>TEST</p><br>
+                            <p>CONTACT</p>
                             <p>TEST</p>
                         </div>
                     </div>
-                </li>
-            </ul>
+                    <div class="textn">RECYCLEBIN</div>
+                    <div class="buttn">
+                        <button type="button" class="button-74" role="button" onclick="onClick({{ info_object.id }})">LIKE
+                        <div class="content heart-active"></div>
+                        <span class="heart heart-active" style="background: url(img/img.png) no-repeat;"></span>
+                        <a id="clicks_{{ info_object.id }}">-</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="box4">
+        <div class="logo">
+            <img src="img/logo9.png" alt="logo">
+        </div>
+        <div class="qr-info">
+            <div class="upload">
+                UPLOAD<br>YOUR<br>WORK<br>HERE!
+            </div>
+            <div class="qr">
+                <img src="img/bin.PNG" alt="qr">
+            </div>
+        </div>
+        
+    </div>
+    <hr color="black">
+    <div class="last-box2">
+        <div class="text2">
+            <div class="marquee-text">ถ้าเค้าทิ้งก็มาลงกับเรา YOU TOSS IT , I GOT IT &nbsp;&nbsp;&nbsp;&nbsp; >>>SWIPE FOR MORE WORK>>> </div>
+        </div>
+    </div>
+    <div class="last-box">
+        <div class="marquee-text">RECYCLE BIN</div>
     </div>
 
     
 </body>
+
 </html>
