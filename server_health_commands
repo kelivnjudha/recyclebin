@@ -1,0 +1,27 @@
+1.Nginx:
+Check the status of the Nginx service:
+sudo systemctl status nginx
+
+2.Gunicorn:
+Since you set up Gunicorn as a systemd service, you can check its status similarly:
+sudo systemctl status recyclebin
+
+3.Logs:
+It's often a good idea to check the logs if you're unsure about the health of your services:
+
+For Nginx: sudo tail -n 20 /var/log/nginx/error.log
+
+For Gunicorn (if you've set up logging in your systemd service file):
+sudo tail -n 20 /path/to/your/gunicorn.log  # replace with the actual path if you set one
+
+4.Visit Your Website:
+Simply open a browser and navigate to your website. This is a practical test to see if Nginx and Gunicorn are serving your Django application correctly.
+
+5.Server Resources:
+While not directly related to Nginx or Gunicorn, it's often a good idea to check the server's resources. If the server is running low on resources, it can cause performance issues or crashes.
+
+Check memory and CPU usage: top
+
+Check disk space: df -h
+
+
