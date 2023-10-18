@@ -2,3 +2,206 @@ tmux (To start tmux session)
 tmux list-sessions (To show list of sessions)
 tmux kill-session -t [SESSION_ID]
 exit (to exit tmux session)
+##################################################################################################
+#                                    SERVER COMMANDS (IMPORTANT)                                 #
+##################################################################################################
+#                                          NGINX                                                 # 
+##################################################################################################
+# Nginx config file
+# installation - sudo apt update && apt install nginx
+# path - /etc/nginx/sites-available/recyclebin
+# config - 
+#   server {
+#       listen 80;
+#       server_name recyclebin.world;
+#       return 301 $scheme://www.recyclebin.world$request_uri;
+#   }
+#   
+#   server {
+#       listen 80;
+#       server_name www.recyclebin.world;
+#
+#       location / {
+#           proxy_pass http://unix:/home/recyclebin/recyclebin/recyclebin.sock;
+#           proxy_set_header Host $host;
+#           proxy_set_header X-Real-IP $remote_addr;
+#           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#        }
+#   }
+#
+#                    To Apply Changes
+#           Restart the Gunicorn - sudo systemctl restart recyclebin
+#
+#                   Test Nginx Config And Reload
+#           Test - sudo nginx -t
+#           Reload - sudo systemctl reload nginx
+##################################################################################################
+
+
+Nginx Error Log ( sudo tail -f /var/log/nginx/error.log )
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+          _____                   _______                   _____                    _____                    _____            _____                _____                    _____          
+         /\    \                 /::\    \                 /\    \                  /\    \                  /\    \          /\    \              /\    \                  /\    \         
+        /::\    \               /::::\    \               /::\____\                /::\    \                /::\____\        /::\    \            /::\    \                /::\    \        
+       /::::\    \             /::::::\    \             /::::|   |               /::::\    \              /:::/    /       /::::\    \           \:::\    \              /::::\    \       
+      /::::::\    \           /::::::::\    \           /:::::|   |              /::::::\    \            /:::/    /       /::::::\    \           \:::\    \            /::::::\    \      
+     /:::/\:::\    \         /:::/~~\:::\    \         /::::::|   |             /:::/\:::\    \          /:::/    /       /:::/\:::\    \           \:::\    \          /:::/\:::\    \     
+    /:::/  \:::\    \       /:::/    \:::\    \       /:::/|::|   |            /:::/__\:::\    \        /:::/    /       /:::/__\:::\    \           \:::\    \        /:::/__\:::\    \    
+   /:::/    \:::\    \     /:::/    / \:::\    \     /:::/ |::|   |           /::::\   \:::\    \      /:::/    /       /::::\   \:::\    \          /::::\    \      /::::\   \:::\    \   
+  /:::/    / \:::\    \   /:::/____/   \:::\____\   /:::/  |::|___|______    /::::::\   \:::\    \    /:::/    /       /::::::\   \:::\    \        /::::::\    \    /::::::\   \:::\    \  
+ /:::/    /   \:::\    \ |:::|    |     |:::|    | /:::/   |::::::::\    \  /:::/\:::\   \:::\____\  /:::/    /       /:::/\:::\   \:::\    \      /:::/\:::\    \  /:::/\:::\   \:::\    \ 
+/:::/____/     \:::\____\|:::|____|     |:::|    |/:::/    |:::::::::\____\/:::/  \:::\   \:::|    |/:::/____/       /:::/__\:::\   \:::\____\    /:::/  \:::\____\/:::/__\:::\   \:::\____\
+\:::\    \      \::/    / \:::\    \   /:::/    / \::/    / ~~~~~/:::/    /\::/    \:::\  /:::|____|\:::\    \       \:::\   \:::\   \::/    /   /:::/    \::/    /\:::\   \:::\   \::/    /
+ \:::\    \      \/____/   \:::\    \ /:::/    /   \/____/      /:::/    /  \/_____/\:::\/:::/    /  \:::\    \       \:::\   \:::\   \/____/   /:::/    / \/____/  \:::\   \:::\   \/____/ 
+  \:::\    \                \:::\    /:::/    /                /:::/    /            \::::::/    /    \:::\    \       \:::\   \:::\    \      /:::/    /            \:::\   \:::\    \     
+   \:::\    \                \:::\__/:::/    /                /:::/    /              \::::/    /      \:::\    \       \:::\   \:::\____\    /:::/    /              \:::\   \:::\____\    
+    \:::\    \                \::::::::/    /                /:::/    /                \::/____/        \:::\    \       \:::\   \::/    /    \::/    /                \:::\   \::/    /    
+     \:::\    \                \::::::/    /                /:::/    /                  ~~               \:::\    \       \:::\   \/____/      \/____/                  \:::\   \/____/     
+      \:::\    \                \::::/    /                /:::/    /                                     \:::\    \       \:::\    \                                    \:::\    \         
+       \:::\____\                \::/____/                /:::/    /                                       \:::\____\       \:::\____\                                    \:::\____\        
+        \::/    /                 ~~                      \::/    /                                         \::/    /        \::/    /                                     \::/    /        
+         \/____/                                           \/____/                                           \/____/          \/____/                                       \/____/         
+                                                                                                                                                                                            
+
+          _____                    _____                _____                    _____                    _____          
+         /\    \                  /\    \              /\    \                  /\    \                  /\    \         
+        /::\    \                /::\    \            /::\    \                /::\____\                /::\    \        
+       /::::\    \              /::::\    \           \:::\    \              /:::/    /               /::::\    \       
+      /::::::\    \            /::::::\    \           \:::\    \            /:::/    /               /::::::\    \      
+     /:::/\:::\    \          /:::/\:::\    \           \:::\    \          /:::/    /               /:::/\:::\    \     
+    /:::/__\:::\    \        /:::/__\:::\    \           \:::\    \        /:::/    /               /:::/__\:::\    \    
+    \:::\   \:::\    \      /::::\   \:::\    \          /::::\    \      /:::/    /               /::::\   \:::\    \   
+  ___\:::\   \:::\    \    /::::::\   \:::\    \        /::::::\    \    /:::/    /      _____    /::::::\   \:::\    \  
+ /\   \:::\   \:::\    \  /:::/\:::\   \:::\    \      /:::/\:::\    \  /:::/____/      /\    \  /:::/\:::\   \:::\____\ 
+/::\   \:::\   \:::\____\/:::/__\:::\   \:::\____\    /:::/  \:::\____\|:::|    /      /::\____\/:::/  \:::\   \:::|    |
+\:::\   \:::\   \::/    /\:::\   \:::\   \::/    /   /:::/    \::/    /|:::|____\     /:::/    /\::/    \:::\  /:::|____|
+ \:::\   \:::\   \/____/  \:::\   \:::\   \/____/   /:::/    / \/____/  \:::\    \   /:::/    /  \/_____/\:::\/:::/    / 
+  \:::\   \:::\    \       \:::\   \:::\    \      /:::/    /            \:::\    \ /:::/    /            \::::::/    /  
+   \:::\   \:::\____\       \:::\   \:::\____\    /:::/    /              \:::\    /:::/    /              \::::/    /   
+    \:::\  /:::/    /        \:::\   \::/    /    \::/    /                \:::\__/:::/    /                \::/____/    
+     \:::\/:::/    /          \:::\   \/____/      \/____/                  \::::::::/    /                  ~~          
+      \::::::/    /            \:::\    \                                    \::::::/    /                               
+       \::::/    /              \:::\____\                                    \::::/    /                                
+        \::/    /                \::/    /                                     \::/____/                                 
+         \/____/                  \/____/                                       ~~                                       
+                                                                                                                         
+
+
+
+
+1. Setting up the Virtual Environment and Installing Dependencies:
+sudo apt update
+sudo apt install python3-pip python3-dev python3-venv nginx
+cd /path/to/your/django/project/
+python3 -m venv myenv
+source myenv/bin/activate
+pip install django gunicorn
+
+
+2. Configure Gunicorn:
+Create a Gunicorn systemd service file:
+sudo nano /etc/systemd/system/recyclebin.service
+Add the following content:
+[Unit]
+Description=gunicorn daemon for myproject
+After=network.target
+
+[Service]
+User=recyclebin8910
+Group=recyclebin8910
+WorkingDirectory=/home/recyclebin/recyclebin
+ExecStart=/usr/local/bin/gunicorn --workers 3 recyclebin.wsgi:application --bind unix:/home/recyclebin/recyclebin/recyclebin.sock
+
+[Install]
+WantedBy=multi-user.target
+
+Start and enable Gunicorn:
+
+sudo systemctl start recyclebin
+sudo systemctl enable recyclebin
+
+
+3. Setting up Nginx for Django:
+Create an Nginx server block file:
+sudo nano /etc/nginx/sites-available/recyclebin
+
+Add the following:
+server {
+    listen 80;
+    server_name recyclebin.world;
+    return 301 $scheme://www.recyclebin.world$request_uri;
+}
+
+server {
+    listen 80;
+    server_name www.recyclebin.world;
+
+    location / {
+        proxy_pass http://unix:/home/recyclebin/recyclebin/recyclebin.sock;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+Enable it by creating a symbolic link and remove the default config:
+
+sudo ln -s /etc/nginx/sites-available/recyclebin /etc/nginx/sites-enabled
+sudo rm /etc/nginx/sites-enabled/default
+
+Test Nginx configuration and restart:
+
+sudo nginx -t
+sudo systemctl restart nginx
+
+4. Finalizing Deployment:
+Ensure your ALLOWED_HOSTS in Django's settings.py includes your domain.
+
+
+Make Website Secure HTTP to HTTPS
+
+1. Install Certbot:
+
+Certbot is an automated tool that helps in obtaining and renewing Let's Encrypt certificates.
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+
+2. Obtain the SSL Certificate:
+Run the following command to get the certificate:
+sudo certbot --nginx -d recyclebin.world -d www.recyclebin.world
+
+Recommended - choose Redirect HTTP traffic to HTTPS
+
+3. 
+
+In terminal 
+RANDOM_MINUTE=$(( RANDOM % 60 ))
+echo $RANDOM_MINUTE
+
+
+crontab -e
+Add following in file
+37 2 * * * certbot renew --quiet
+
+crontab -l
+certbot certificates
+sudo certbot renew --dry-run
+
+
+sudo nano /etc/nginx/sites-available/recyclebin
+Add the following line of code in server block
+
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+sudo systemctl reload nginx
+
+sudo certbot renew --dry-run
+
+
+
+
+
