@@ -1,0 +1,96 @@
+*{
+    outline:1px solid red;
+}
+body{
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.box1{
+    background-color: #0023FF;
+    height: 70px;
+    font-size: 40px;
+    font-family: 'Dela Gothic One', cursive;
+    color: #FFFFFF;
+    word-spacing: 20px;
+    letter-spacing: 10px;
+}
+
+.box2{
+    background-color: #32FF00;
+    height: 70px;
+    align-content: center;
+    font-size: 40px;
+    text-align: center;
+}
+
+.text2{
+    font-family: 'Fahkwang', sans-serif;
+    font-size: 28px;
+    text-align: center;
+    color: #0023FF;
+    width: 100%;
+    word-spacing: 0px;
+    letter-spacing: 10px;   
+}
+.text2 marquee{
+    margin-top: 13px;
+}
+
+.box3{
+    font-family: 'Dela Gothic One', cursive;
+}
+.swiper-container {
+    width: 100%;
+    height: auto;
+    font-size: 100px;
+    font-family: 'Dela Gothic One', cursive;
+    color: #3F0BFC;
+}
+.swiper-wrapper{
+    padding-left: initial;
+    margin: 0;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    width: 80%;
+    border-right: 1px solid #0023FF;
+    background-color: #0023FF;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.profile-info-container p{
+    color: white;
+}
+.profile-container{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+@media screen and (min-width:1025px) and (max-width:1440px){
+    .img-container img{
+        width: auto;
+        height: 800px;
+    }
+    .profile-container{
+        gap: 40px;
+    }
+}
