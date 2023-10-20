@@ -42,44 +42,44 @@
                 },
             });
 
-    $('.content').click(function(){
-        $('.content').toggleClass("heart-active")
-        $('.text').toggleClass("heart-active")
-        $('.numb').toggleClass("heart-active")
-        $('.heart').toggleClass("heart-active")
-    });
-});
+        $('.content').click(function(){
+            $('.content').toggleClass("heart-active")
+            $('.text').toggleClass("heart-active")
+            $('.numb').toggleClass("heart-active")
+            $('.heart').toggleClass("heart-active")
+            });
+        });
 
-    
-var clicks = 0;
+            
+        var clicks = 0;
 
-function onClick(info_object_id) {
-    $.ajax({
-        url: `/like/${info_object_id}/`,
-        method: 'POST',
-        success: function(response) {
-            document.getElementById(`clicks_${info_object_id}`).innerHTML = response.like_count;
+        function onClick(info_object_id) {
+            $.ajax({
+                url: `/like/${info_object_id}/`,
+                method: 'POST',
+                success: function(response) {
+                    document.getElementById(`clicks_${info_object_id}`).innerHTML = response.like_count;
+                }
+            });
         }
-    });
-}
 
-// Call this function on page load to set the initial like counts
-function setInitialLikeCounts() {
-    {% for info_object in info_objects %}
-    $.ajax({
-        url: `/get_like_count/${info_object.id}/`,
-        method: 'GET',
-        success: function(response) {
-            document.getElementById(`clicks_${info_object.id}`).innerHTML = response.like_count;
+        // Call this function on page load to set the initial like counts
+        function setInitialLikeCounts() {
+            {% for info_object in info_objects %}
+            $.ajax({
+                url: `/get_like_count/${info_object.id}/`,
+                method: 'GET',
+                success: function(response) {
+                    document.getElementById(`clicks_${info_object.id}`).innerHTML = response.like_count;
+                }
+            });
+            {% endfor %}
         }
-    });
-    {% endfor %}
-}
 
-$(document).ready(function() {
-    setInitialLikeCounts();
-});
-
+        $(document).ready(function() {
+            setInitialLikeCounts();
+        });
+                                                                                        
 
     </script>
 </head>
@@ -114,6 +114,7 @@ $(document).ready(function() {
                     </div>
                     <div class="textn">RECYCLEBIN</div>
                     <div class="buttn">
+                        {% csrf_token %}
                         <button type="button" class="button-74" role="button" onclick="onClick({{ info_object.id }})">LIKE
                         <div class="content heart-active"></div>
                         <span class="heart heart-active" style="background: url(img/img.png) no-repeat;"></span>

@@ -25,17 +25,7 @@ SECRET_KEY = 'django-insecure-agi)tc_hmy3yd#lx2f89=1n4jvvn_yk5sv0sy37fw)e-6s)q8-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['recyclebin.world', 'www.recyclebin.world']
-
-CSRF_COOKIE_SECURE = True
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-CORS_ALLOW_ALL_ORIGINS = True
-
-CORS_ALLOWED_ORIGINS = [
-    "https://www.recyclebin.world",
-]
+ALLOWED_HOSTS = ['recyclebin.worldsudo systemctl restart nginx', 'www.recyclebin.world']
 
 
 # Application definition
@@ -50,7 +40,6 @@ INSTALLED_APPS = [
     'core',
     'Arts',
     'channels',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'recyclebin.urls'
@@ -110,9 +98,6 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ['www.recyclebin.world']
-
-CSRF_COOKIE_DOMAIN = '.recyclebin.world'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -148,8 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
