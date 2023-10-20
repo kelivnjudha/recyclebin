@@ -1,0 +1,399 @@
+
+body{
+  margin-top: 0;
+  background-color: #32FF00;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.box1{
+  background-color: #0023FF;
+  height: 70px;
+  font-size: 40px;
+  font-family: 'Dela Gothic One', cursive;
+  color: #FFFFFF;
+  word-spacing: 20px;
+  letter-spacing: 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.last-box{
+  background-color: #0023FF;
+  height: 70px;
+  font-size: 40px;
+  font-family: 'Dela Gothic One', cursive;
+  color: #FFFFFF;
+  word-spacing: 20px;
+  letter-spacing: 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  
+}
+
+hr{
+  margin-top: 20px;
+}
+
+.box2{
+  background-color: #32FF00;
+  height: 70px;
+  align-content: center;
+  font-size: 40px;
+  text-align: center;
+}
+
+.last-box2{
+  height: 70px;
+  align-content: center;
+  font-size: 40px;
+  text-align: center;
+  
+}
+
+.text2{
+  font-family: 'Fahkwang', sans-serif;
+  font-size: 28px;
+  text-align: center;
+  color: #0023FF;
+  width: 100%;
+  word-spacing: 0px;
+  letter-spacing: 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;   
+}
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+.text2 div{
+  margin-top: 13px;
+}
+
+.box3{
+  font-family: 'Dela Gothic One', cursive;
+}
+.swiper-container {
+  width: 100%;
+  height: auto;
+  font-size: 100px;
+  font-family: 'Dela Gothic One', cursive;
+  color: #3F0BFC;
+}
+.swiper-wrapper{
+  padding-left: initial;
+  margin: 0;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  width: 80%;
+  border-right: 1px solid #0023FF;
+  background-color: #0023FF;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.profile-info-container p{
+  color: white;
+}
+.profile-container{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.profile-info-container{
+  align-items: center;
+  align-content: center;
+}
+
+.textn{
+  font-size: 30px;
+  background-color: #32FF00;
+  padding-bottom: 20px;
+padding-top: 10px;
+}
+
+.buttn{
+  background-color: #32FF00;
+}
+
+.button-74:hover {
+  background-color: #EEDBFF;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.heart-btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.content{
+  padding: 13px 16px;
+  display: flex;
+  cursor: pointer;
+}
+
+.heart{
+  position: absolute;
+
+  
+}
+.button-74 {
+  background-color: #fff;
+  border: 2px solid #0023FF;
+  border-radius: 30px;
+  box-shadow: #0122FE 4px 4px 0 0;
+  color:#0122FE;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Dela Gothic One', cursive;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #EEDBFF;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.logo img{
+  width: auto;
+  height: 199px;
+}
+  
+.qr img{
+  width: auto;
+  height: 199px;
+}
+
+.qr-info{
+  display: flex;
+  height: 199px;
+}
+
+.upload{
+  color: #0023FF;
+font-family: 'Dela Gothic One', cursive;
+  font-size: 25px;
+  text-align: right;
+}
+
+.box4{
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1440px){
+  .img-container img{
+      width: auto;
+      height: 650px;
+  }
+  .profile-container{
+      gap: 40px;
+  }
+  .profile-info-container{
+      height: 600px;
+  }
+  .box4{
+      left: 50%;
+      right: 50%;
+      position: absolute;
+      top: 810px;
+      gap: 900px;
+  }
+}
+
+@media screen and (min-width:1025px) and (max-width:1440px){
+  .img-container img{
+      width: auto;
+      height: 600px;
+  }
+  .profile-container{
+      gap: 30px;
+  }
+  .profile-info-container{
+      height: 600px;
+  }
+  .box4{
+      left: 50%;
+      right: 50%;
+      position: absolute;
+      top: 760px;
+      gap: 500px;
+  }
+}
+
+@media screen and (min-width:769px) and (max-width:1024px){
+  .img-container img{
+      width: auto;
+      height: 400px;
+  }
+  .profile-container{
+      gap: 30px;
+  }
+  .profile-info-container{
+      height: 400px;
+  }
+  .box4{
+      left: 50%;
+      right: 50%;
+      position: absolute;
+      top: 590px;
+      gap: 380px;
+  }
+  .profile-info-container p{
+      font-size: 12px;
+  }
+  .logo img{
+      width: auto;
+      height: 149px;
+  }
+      
+  .qr img{
+      width: auto;
+      height: 149px;
+  }
+  .upload{
+      font-size: 20px;
+  }
+  
+  .qr-info{
+      display: flex;
+      height: 149px;
+  }
+  .box1{
+      height: 60px;
+      font-size: 30px;
+  }
+  
+  .last-box{
+      height: 60px;
+      font-size: 30px;
+  }
+
+  .box2{
+      height: 60px;
+      font-size: 30px;
+  }
+
+  .last-box2{
+      height: 60px;
+      font-size: 30px;
+  } 
+}
+
+@media screen and (min-width:426px) and (max-width:768px){
+  .img-container img{
+      width: auto;
+      height: 200px;
+  }
+  .profile-container{
+      gap: 30px;
+  }
+  .profile-info-container{
+      height: 200px;
+  }
+  .textn{
+      font-size: 20px;
+  }
+
+  .buttn button{
+      height: 80px;
+      font-size: 10px;
+  }
+
+  button a{
+      position: absolute;
+      top: 300px;
+      left: 50%;
+      right: 50%;
+  }
+
+  .box4{
+      left: 50%;
+      right: 50%;
+      position: absolute;
+      top: 340px;
+      gap: 270px;
+  }
+  .profile-info-container p{
+      font-size: 5px;
+  }
+  .logo img{
+      width: auto;
+      height: 80px;
+  }
+      
+  .qr img{
+      width: auto;
+      height: 80px;
+  }
+  .upload{
+      font-size: 10px;
+  }
+  
+  .qr-info{
+      display: flex;
+      height: 149px;
+  }
+  .box1{
+      height: 40px;
+      font-size: 20px;
+  }
+  
+  .last-box{
+      height: 40px;
+      font-size: 20px;
+  }
+
+  .box2{
+      height: 40px;
+      font-size: 20px;
+  }
+
+  .last-box2, .marquee-text{
+      height: 40px;
+      font-size: 20px;
+  } 
+}

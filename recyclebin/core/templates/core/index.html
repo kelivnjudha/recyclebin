@@ -1,10 +1,12 @@
 {% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECYCLEBIN DESING</title>
+    <title>RECYCLEBIN</title>
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,29 +15,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    {% csrf_token %}
     <script>
         alert("JAVASCRIPT IS RUNNING")
+        var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        console.log(csrftoken)
+        $.ajaxSetup({
+                headers: { "X-CSRFToken": csrftoken }
+            });
 
-$(document).ready(function(){
-    $.ajaxSetup({
-        headers: { "X-CSRFToken": '{{ csrf_token }}' }
-    });
+        $(document).ready(function(){
 
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        loop: true,
-        slidesPerView: 'auto',
-        paginationClickable: true,
-        spaceBetween: 0,
-        effect: "coverflow",
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-        },
-    });
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                loop: true,
+                slidesPerView: 'auto',
+                paginationClickable: true,
+                spaceBetween: 0,
+                effect: "coverflow",
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+            });
 
     $('.content').click(function(){
         $('.content').toggleClass("heart-active")

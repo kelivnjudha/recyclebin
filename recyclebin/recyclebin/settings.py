@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-agi)tc_hmy3yd#lx2f89=1n4jvvn_yk5sv0sy37fw)e-6s)q8-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'www.recyclebin.world']
+ALLOWED_HOSTS = ['recyclebin.world', 'www.recyclebin.world']
+
+CSRF_COOKIE_SECURE = True
 
 
 # Application definition
@@ -98,6 +100,9 @@ DATABASES = {
     }
 }
 
+CSRF_TRUSTED_ORIGINS = ['www.recyclebin.world']
+
+CSRF_COOKIE_DOMAIN = ['.recyclebin.world',]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -133,7 +138,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

@@ -2,7 +2,10 @@ from django.shortcuts import render
 from Arts.models import Upload, Info
 from django.http import JsonResponse
 from .utils import format_likes_count
+from django.views.decorators.csrf import csrf_exempt
 import random
+
+
 # Create your views here.
 def index(request):
     uploads = Upload.objects.all()
@@ -12,6 +15,7 @@ def index(request):
         'info_objects':info_objects,
     })
 
+@csrf_exempt
 def like_view(request, info_object_id):
     if request.method == "POST":
         info_object = Info.objects.get(id=info_object_id)
