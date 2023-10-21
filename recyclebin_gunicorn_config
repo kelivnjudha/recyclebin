@@ -1,0 +1,13 @@
+root@Recyclebin:/etc/systemd/system# cat recyclebin.service
+[Unit]
+Description=gunicorn daemon for myproject
+After=network.target
+
+[Service]
+User=recyclebin8910
+Group=recyclebin8910
+WorkingDirectory=/home/recyclebin/recyclebin
+ExecStart=/usr/local/bin/gunicorn --workers 3 recyclebin.wsgi:application --bind unix:/home/recyclebin/recyclebin/recyclebin.sock
+
+[Install]
+WantedBy=multi-user.target

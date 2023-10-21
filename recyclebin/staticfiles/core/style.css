@@ -116,6 +116,10 @@ hr{
   align-items: center;
 }
 
+p .info-Des,p .info-rj{
+  font-family: 'Fahkwang', sans-serif;
+}
+
 .profile-info-container p{
   color: white;
 }

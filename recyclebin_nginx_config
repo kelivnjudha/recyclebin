@@ -1,0 +1,75 @@
+root@Recyclebin:~# cat /etc/nginx/sites-available/recyclebin
+server {
+    server_name recyclebin.world;
+    return 301 $scheme://www.recyclebin.world$request_uri;
+
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/recyclebin.world/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/recyclebin.world/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    server_name www.recyclebin.world;
+
+    location /static/ {
+        alias /home/recyclebin/recyclebin/staticfiles/;
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000";
+    }
+
+    location /media/ {
+        alias /home/recyclebin/recyclebin/media/;
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000";
+    }
+    location / {
+        proxy_pass http://unix:/home/recyclebin/recyclebin/recyclebin.sock;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Origin $http_origin;
+        proxy_set_header Referer $http_referer;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/recyclebin.world/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/recyclebin.world/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+
+server {
+    if ($host = recyclebin.world) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name recyclebin.world;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = www.recyclebin.world) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name www.recyclebin.world;
+    return 404; # managed by Certbot
+
+
+}
