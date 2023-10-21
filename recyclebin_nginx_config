@@ -37,6 +37,7 @@ server {
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_set_header X-Forwarded-Proto $scheme;
+        client_max_body_size 10M;
     }
 
     listen 443 ssl; # managed by Certbot
