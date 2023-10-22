@@ -245,10 +245,10 @@ font-family: 'Dela Gothic One', cursive;
 }
 
 @media screen and (min-width:1025px) and (max-width:1440px){
-  .img-container img{
+  /*.img-container img{
       width: auto;
       height: 600px;
-  }
+  } */
   .profile-container{
       gap: 30px;
   }

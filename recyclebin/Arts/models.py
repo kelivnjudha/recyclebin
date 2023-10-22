@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .images_utils import resize_image
 from PIL import Image
 # Create your models here.
 class Upload(models.Model):
@@ -32,11 +33,6 @@ class Info(models.Model):  # Changed model name to 'Info' with an uppercase 'I'
 
         # Open the uploaded image
         img = Image.open(self.image.path)
-
-        # Resize it to your desired dimensions
-        # For example, let's say you want it to be 800x800
-        output_size = (400, 400)
-        img.thumbnail(output_size)
-
-        # Save the resized image back to the same path
-        img.save(self.image.path)
+        target_height = 600
+        img_resized = resize_image(img, target_height)
+        img_resized.save(self.image.path)
