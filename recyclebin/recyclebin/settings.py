@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-agi)tc_hmy3yd#lx2f89=1n4jvvn_yk5sv0sy37fw)e-6s)q8-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['recyclebin.world', 'www.recyclebin.world']
 

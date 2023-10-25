@@ -5,3 +5,6 @@
 
 export PYTHONPATH=/home/recyclebin/recyclebin:$PYTHONPATH
 
+#reload
+kill -HUP $(pgrep -f gunicorn)
+
